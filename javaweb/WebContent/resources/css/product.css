@@ -1,0 +1,70 @@
+#container {
+	display: flex;
+	flex-flow : row nowarp;
+	align-items :center;
+
+}
+
+div[id="url"] {
+	padding: 3px 6px;
+	font-size:12px;
+	border: 1px solid #E7EAEC;
+	width: 160px;
+	height: 30px;
+	line-height: 30px;
+	border-left: 3px solid #3FB7EB;
+	background: #FAFAFB;
+	border-radius: 5px;
+}
+
+div[id="add"]{
+	
+	margin-left:10px;
+	
+	border: 1px dashed #00A2D4;
+	border-radius: 2px;
+	
+	height:30px ; width:30px;
+	
+	background-image: url(/javaweb/resources/img/add.png);
+	background-size: contain;
+	background-position: center;
+}
+
+input[type='file'] {
+	border: 0px;
+	display: none;
+}
+
+#process-contianer {
+	width: 220px;
+	height: 30px;
+	background-color: #c0c0c0;
+	display: none;
+}
+#process{
+	width: 0px;
+	height: 30px;
+	background-color: #00A2D4;
+	color: white;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 3px;
+}
+
+
+#go {
+	
+	height: 30px;
+	width: 80px;
+	background-color: #00A2D4;
+	border-radius: 20px;
+	
+	text-align: center;
+	line-height: 30px;
+	color:white;
+	
+}
+
+
+
