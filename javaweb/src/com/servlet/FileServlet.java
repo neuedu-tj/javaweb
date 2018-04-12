@@ -14,14 +14,22 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.FileUtils;
 
+import com.dao.ProductDao;
+
 
 @WebServlet("/file")
 @MultipartConfig
 public class FileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private ProductDao productdao = new ProductDao();
+	
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		
+		
+		productdao.getProducts();
+		
 		Collection<Part> parts = request.getParts();
 
 		for (Part part : parts) {
