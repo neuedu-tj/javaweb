@@ -18,6 +18,7 @@ import org.apache.commons.io.FileUtils;
 
 import com.dao.ProductDao;
 import com.domain.Product;
+import com.utils.PageBean;
 
 
 @WebServlet("/product")
@@ -33,6 +34,8 @@ public class ProductServlet extends HttpServlet {
 			saveProduct(request ,response);
 		} else if("getProduct".equalsIgnoreCase(method)) {
 			getProduct(request , response);
+		} else if("getProductByPage".equalsIgnoreCase(method)){
+			getProductByPage(request , response);
 		} else {
 			getProduct(request , response);
 		}
@@ -40,6 +43,26 @@ public class ProductServlet extends HttpServlet {
 		
 	}
 	
+	//分页
+	protected void getProductByPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int curr_page ;
+		if(request.getParameter("curr")==null) {
+			curr_page = 1;
+		} else {
+			curr_page = Integer.parseInt(request.getParameter("curr"));
+		}
+		
+		ProductDao dao = new ProductDao();
+		
+		PageBean pageBean = dao.getProductByPage(curr_page, 5);
+		
+		request.setAttribute("pageBean", pageBean);
+		
+		request.getRequestDispatcher("page/products_page.jsp").forward(request, response);
+		
+	}
+
 	//获取所有产品
 	protected void getProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductDao dao = new ProductDao();
