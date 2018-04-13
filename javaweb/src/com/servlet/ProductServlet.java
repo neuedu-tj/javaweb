@@ -46,6 +46,10 @@ public class ProductServlet extends HttpServlet {
 	//分页
 	protected void getProductByPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String name = request.getParameter("name");
+		
+		System.out.println("name : " + name);
+		
 		int curr_page ;
 		if(request.getParameter("curr")==null) {
 			curr_page = 1;
@@ -85,29 +89,31 @@ public class ProductServlet extends HttpServlet {
 		String price = request.getParameter("price");
 		String desc = request.getParameter("desc");
 		
+		System.out.println("pname : " + pname);
+		
 //		Part imgs = request.getPart("imgs");//获取单个文件
-		ProductDao dao = new ProductDao();
-		
-		StringBuilder sbd = new StringBuilder();
-		
-		Collection<Part> parts = request.getParts();
-		for (Part part : parts) {
-			if("imgs".equalsIgnoreCase(part.getName())) {
-				String realative_url = "/javaweb/imgs/"+part.getSubmittedFileName();
-				
-				sbd.append(realative_url).append(",");
-				
-				String abs_url = request.getRealPath("imgs") + "/"+ part.getSubmittedFileName();
-				FileUtils.copyToFile(part.getInputStream(), new File(abs_url));
-			}
-		}
-		
-		String last_realative_url = sbd.deleteCharAt(sbd.lastIndexOf(",")).toString();
-		
-		Product product = new Product( pname , new BigDecimal(price) , desc , last_realative_url );
-		dao.saveProduct(product);
-
-		getProduct(request , response);
+//		ProductDao dao = new ProductDao();
+//		
+//		StringBuilder sbd = new StringBuilder();
+//		
+//		Collection<Part> parts = request.getParts();
+//		for (Part part : parts) {
+//			if("imgs".equalsIgnoreCase(part.getName())) {
+//				String realative_url = "/javaweb/imgs/"+part.getSubmittedFileName();
+//				
+//				sbd.append(realative_url).append(",");
+//				
+//				String abs_url = request.getRealPath("imgs") + "/"+ part.getSubmittedFileName();
+//				FileUtils.copyToFile(part.getInputStream(), new File(abs_url));
+//			}
+//		}
+//		
+//		String last_realative_url = sbd.deleteCharAt(sbd.lastIndexOf(",")).toString();
+//		
+//		Product product = new Product( pname , new BigDecimal(price) , desc , last_realative_url );
+//		dao.saveProduct(product);
+//
+//		getProduct(request , response);
 	}
 
 }
