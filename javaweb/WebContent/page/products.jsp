@@ -11,6 +11,10 @@
 </head>
 <body>
 
+	<div>appname : ${applicationScope.appName}</div>
+
+	<hr>
+
 	<table>
 		<tr>
 			<td>index</td>
