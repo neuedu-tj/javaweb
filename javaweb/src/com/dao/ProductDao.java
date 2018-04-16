@@ -17,6 +17,18 @@ public class ProductDao {
 		System.out.println(new ProductDao().getProductByPage( 1 , 5 ));
 	}
 	
+	
+	public Product getProductById( int pid ) {
+		String sql = "select * from product where pid = ? ";
+		Object[] params = {pid};
+		
+		List<Product> products = (List<Product>)utils.findByType(sql, Product.class, params);
+		
+		if(products!=null && products.size() >0) return products.get(0);
+		else return null;
+	}
+	
+	
 	public PageBean getProductByPage( int curr , int pageSize ) {  
 		
 		PageBean pageBean = new PageBean();

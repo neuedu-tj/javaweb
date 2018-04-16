@@ -36,7 +36,9 @@
 						<img src="${img}" height="50px" width="50px" >
 					</c:forTokens>
 				</td>
-				<td>modify | remove</td>
+				<td>
+					<a href="buy?pid=${p.pid }" >buy</a>
+				</td>
 			</tr>
 		</c:forEach>
 
